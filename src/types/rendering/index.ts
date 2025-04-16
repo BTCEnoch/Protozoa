@@ -4,4 +4,17 @@
  * This file exports all rendering-related type definitions.
  */
 
-// Export rendering types as they are implemented
+// Export instanced rendering types
+export * from './instanced';
+
+// Export render service types
+export * from './renderService';
+
+// Export buffer types
+export * from './buffers';
+
+// Export LOD types
+export * from './lod';
+
+// Export shader types
+export * from './shaders';

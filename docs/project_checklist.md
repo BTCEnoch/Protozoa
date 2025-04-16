@@ -18,8 +18,8 @@ This document provides a comprehensive checklist for implementing the Bitcoin Pr
 - [x] Implement mutation type definitions (`mutation.ts`)
 - [x] Implement creature type definitions (`creature.ts`)
 - [x] Implement bitcoin type definitions (`bitcoin.ts`)
-- [ ] Implement events type definitions (`events.ts`)
-- [ ] Implement config type definitions (`config.ts`)
+- [x] Implement events type definitions (`events.ts`)
+- [x] Implement config type definitions (`config.ts`)
 - [x] Implement RNG type definitions (`rng.ts`)
 - [x] Implement game theory types
   - [x] Payoff matrix types (`gameTheory/payoffMatrix.ts`)
@@ -27,15 +27,15 @@ This document provides a comprehensive checklist for implementing the Bitcoin Pr
   - [x] Nash equilibrium types (`gameTheory/nashEquilibrium.ts`)
   - [x] Utility function types (`gameTheory/utilityFunction.ts`)
   - [x] Battle outcome types (`gameTheory/battleOutcome.ts`)
-- [ ] Implement rendering-specific types
-  - [ ] Instanced rendering types (`rendering/instanced.ts`)
-  - [ ] Shader interface definitions (`rendering/shaders.ts`)
-  - [ ] Level of detail types (`rendering/lod.ts`)
-  - [ ] Buffer geometry types (`rendering/buffers.ts`)
-- [ ] Implement worker-specific types
-  - [ ] Worker message types (`workers/messages.ts`)
-  - [ ] Physics worker types (`workers/physics.ts`)
-  - [ ] Compute worker types (`workers/compute.ts`)
+- [x] Implement rendering-specific types
+  - [x] Instanced rendering types (`rendering/instanced.ts`)
+  - [x] Shader interface definitions (`rendering/shaders.ts`)
+  - [x] Level of detail types (`rendering/lod.ts`)
+  - [x] Buffer geometry types (`rendering/buffers.ts`)
+- [x] Implement worker-specific types
+  - [x] Worker message types (`workers/messages.ts`)
+  - [x] Physics worker types (`workers/physics.ts`)
+  - [x] Compute worker types (`workers/compute.ts`)
 
 ### Core Libraries
 - [x] Implement RNG system (`lib/rngSystem.ts`)
@@ -47,12 +47,12 @@ This document provides a comprehensive checklist for implementing the Bitcoin Pr
   - [x] Decision tree evaluation
   - [x] Utility function calculations
 - [x] Implement particle system (`lib/particleSystem.ts`)
-- [ ] Implement formation system (`lib/formationSystem.ts`)
-- [ ] Implement event bus (`lib/eventBus.ts`)
+- [x] Implement formation system (`lib/formationSystem.ts`)
+- [x] Implement event bus (`lib/eventBus.ts`)
 - [x] Implement math utilities (`lib/mathUtils.ts`)
-- [ ] Implement spatial utilities (`lib/spatialUtils.ts`)
-- [ ] Implement worker bridge (`lib/workerBridge.ts`)
-- [ ] Implement rendering utilities (`lib/renderingUtils.ts`)
+- [x] Implement spatial utilities (`lib/spatialUtils.ts`)
+- [x] Implement worker bridge (`lib/workerBridge.ts`)
+- [x] Implement rendering utilities (`lib/renderingUtils.ts`)
 
 ### Domain Services
 - [x] Implement trait services
@@ -63,7 +63,7 @@ This document provides a comprehensive checklist for implementing the Bitcoin Pr
   - [x] Formation bank loader (`services/formations/formationBankLoader.ts`)
 - [x] Implement behavior services
   - [x] Behavior service (`services/behaviors/behaviorService.ts`) with BlockData initialization
-  - [ ] Behavior bank loader (using `services/behaviors/behaviorGenerators.ts` instead)
+  - [x] Behavior bank loader (`services/behaviors/behaviorBankLoader.ts`)
 - [x] Implement ability services
   - [x] Ability service (`services/abilities/abilityService.ts`) with BlockData initialization
   - [x] Ability bank loader (`services/abilities/abilityBankLoader.ts`)
@@ -85,9 +85,9 @@ This document provides a comprehensive checklist for implementing the Bitcoin Pr
   - [x] Shader manager (`services/rendering/shaderManager.ts`)
   - [x] LOD manager (`services/rendering/lodManager.ts`)
   - [x] Render service (`services/rendering/renderService.ts`)
-- [ ] Implement creature generator (`services/creatureGenerator.ts`)
-- [ ] Implement storage service (`services/storageService.ts`)
-- [ ] Implement event service (`services/eventService.ts`)
+- [x] Implement creature generator (`services/creatureGenerator.ts`)
+- [x] Implement storage service (`services/storage/storageService.ts`)
+- [x] Implement event service (`services/events/eventService.ts`)
 
 ### Web Workers
 - [x] Implement physics workers
@@ -96,6 +96,9 @@ This document provides a comprehensive checklist for implementing the Bitcoin Pr
 - [x] Implement behavior workers
   - [x] Flocking behavior worker (`workers/behavior/flockingWorker.ts`)
   - [x] Pattern behavior worker (`workers/behavior/patternWorker.ts`)
+- [x] Implement formation workers
+  - [x] Formation calculation worker (`workers/formation/formationWorker.ts`)
+  - [x] Formation worker service (`workers/formation/formationWorkerService.ts`)
 - [x] Implement rendering workers
   - [x] Particle rendering worker (`workers/render/particleWorker.ts`)
 - [x] Implement bitcoin workers

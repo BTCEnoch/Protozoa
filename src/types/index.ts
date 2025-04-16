@@ -4,29 +4,22 @@
  * This file exports all types for the Bitcoin Protozoa project.
  */
 
-// Export Bitcoin types
+// Core and common types
+export * from './core';  // Base types come first
+
+// Domain-specific types
 export * from './bitcoin';
-
-// Export RNG types
 export * from './rng';
-
-// Export Creature types
 export * from './creature';
-
-// Export Core types
-export * from './core';
-
-// Export Trait types
-export * from './trait';
-
-// Export Subclass types
-export * from '../../ability_reference';
-
-// Export Game Theory types
 export * from './gameTheory';
 
-// Export Rendering types
-export * from './rendering';
+// Trait and related systems
+export * from './trait';
 
-// Export Worker types
+// Game systems
+export * from './formation';
+export * from './events';
+
+// Technical systems
+export * from './rendering';
 export * from './workers';

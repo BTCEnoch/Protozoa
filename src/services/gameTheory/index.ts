@@ -1,10 +1,17 @@
 /**
- * Game Theory Services Index
- * 
- * This file exports all game theory related services.
+ * Game Theory Service index
+ *
+ * This file exports all Game Theory related services.
  */
 
+// Export Payoff Matrix service
 export * from './payoffMatrixService';
+
+// Export Nash Equilibrium finder
 export * from './nashEquilibriumFinder';
+
+// Export Decision Tree service
 export * from './decisionTreeService';
+
+// Export Utility Function service
 export * from './utilityFunctionService';

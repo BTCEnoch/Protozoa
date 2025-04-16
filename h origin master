@@ -1,0 +1,5 @@
+[33mcommit 0002f9eccd8fa0699d1057ff9decbee5759223d0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: BTCEnoch <btcenoch@gmail.com>
+Date:   Wed Apr 16 01:32:45 2025 -0700
+
+    Fix TypeScript linter errors in formationBankLoader and formationWorker, add gameTheory types
