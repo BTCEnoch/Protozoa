@@ -1,6 +1,6 @@
 import { createRNGFromBlockNonce, type RNGStream } from '../rngSystem';
 import { getBitcoinService } from '../../services/bitcoin';
-import type { BlockData } from '../../types/bitcoin';
+import type { BlockData } from '../../types/bitcoin/bitcoin';
 
 describe('RNGSystem', () => {
   let blockData: BlockData;
@@ -131,4 +131,5 @@ describe('RNGSystem', () => {
     });
   });
 });
+
 

@@ -5,7 +5,7 @@
  * At this tier, creatures have unique, powerful subclasses with specific ability sets.
  */
 
-import { Tier, Role } from '../../../types/ability';
+import { Tier, Role } from '../../../types/abilities/ability';
 
 // Immortal Colossus Subclass
 export const immortalColossusSubclass = {
@@ -128,3 +128,4 @@ export const defenseMythicPool = {
 };
 
 export default defenseMythicPool;
+

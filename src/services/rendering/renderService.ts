@@ -14,7 +14,7 @@ import { Vector3, Role } from '../../types/core';
 import { getParticleRenderer } from './particleRenderer';
 import { getShaderManager } from './shaderManager';
 import { getLODManager } from './lodManager';
-import { BlockData } from '../../types/bitcoin/block';
+import { BlockData } from '../../types/bitcoin/bitcoin/block';
 
 /**
  * Render Service class
@@ -315,3 +315,4 @@ export function getRenderService(): RenderService {
 
   return renderServiceInstance;
 }
+

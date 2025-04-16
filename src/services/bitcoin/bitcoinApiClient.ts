@@ -5,7 +5,7 @@
  * It handles API requests, error handling, and data parsing.
  */
 
-import { BlockData, BlockInfo } from '../../types/bitcoin';
+import { BlockData, BlockInfo } from '../../types/bitcoin/bitcoin';
 
 /**
  * Bitcoin API client class
@@ -185,3 +185,4 @@ export class BitcoinApiClient {
 export function getBitcoinApiClient(): BitcoinApiClient {
   return BitcoinApiClient.getInstance();
 }
+

@@ -5,7 +5,7 @@
  */
 
 import { Role, Tier, Rarity } from '../../../../types/core';
-import { FormationPattern, FormationPatternType } from '../../../../types/formation';
+import { FormationPattern, FormationPatternType } from '../../../../types/formations/formation';
 import { Vector3 } from '../../../../types/common';
 
 /**
@@ -151,3 +151,4 @@ export const mandelbrotFormations = {
     [Tier.TIER_6]: createMandelbrotFormation(Role.MOVEMENT, Tier.TIER_6, Rarity.MYTHIC)
   }
 };
+

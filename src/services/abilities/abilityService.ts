@@ -5,10 +5,10 @@
  * It handles ability selection, application, and evolution.
  */
 
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import { Role } from '../../types/core';
-import { Tier, Ability, AbilityPool, FormationTrait } from '../../types/ability';
-import { RNGSystem } from '../../types/rng';
+import { Tier, Ability, AbilityPool, FormationTrait } from '../../types/abilities/ability';
+import { RNGSystem } from '../../types/utils/rng';
 import { createRNGFromBlockNonce } from '../../lib/rngSystem';
 import { getAbilityBankLoader } from './abilityBankLoader';
 
@@ -195,3 +195,4 @@ export function getAbilityService(): AbilityService {
   }
   return abilityServiceInstance;
 }
+

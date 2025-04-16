@@ -5,7 +5,7 @@
  */
 
 import { Role, Tier, Rarity } from '../../../../types/core';
-import { FormationPattern, FormationPatternType } from '../../../../types/formation';
+import { FormationPattern, FormationPatternType } from '../../../../types/formations/formation';
 import { Vector3 } from '../../../../types/common';
 
 /**
@@ -164,3 +164,4 @@ export const swarmFormations = {
     [Tier.TIER_5]: createSwarmFormation(Role.MOVEMENT, Tier.TIER_5, Rarity.LEGENDARY)
   }
 };
+

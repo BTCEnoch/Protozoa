@@ -6,17 +6,17 @@
  */
 
 import { Role, Tier } from '../../types/core';
-import { ParticleGroup, ParticleGroupCreationOptions } from '../../types/particle';
-import { RNGSystem } from '../../types/rng';
-import { BlockData } from '../../types/bitcoin';
+import { ParticleGroup, ParticleGroupCreationOptions } from '../../types/particles/particle';
+import { RNGSystem } from '../../types/utils/rng';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import { createRNGFromBlockNonce } from '../../lib/rngSystem';
 import { createParticleGroup, determineTierFromAttributeValue } from '../../lib/particleSystem';
-import { TraitCollection } from '../../types/trait';
+import { TraitCollection } from '../../types/traits/trait';
 import { getTraitService } from '../traits/index';
 import { getAbilityFactory } from '../abilities/index';
 import { getBehaviorService } from '../behaviors/index';
 import { getFormationService } from '../formations/index';
-import { SubclassData } from '../../types/ability_reference';
+import { SubclassData } from '../../types/abilities/ability_reference';
 
 /**
  * Particle Group Factory class
@@ -270,3 +270,4 @@ class ParticleGroupFactory {
 export function getParticleGroupFactory(): ParticleGroupFactory {
   return ParticleGroupFactory.getInstance();
 }
+

@@ -5,8 +5,8 @@
  * and creating a trait bank for use by the trait service and factory.
  */
 
-import { Role } from '../../types/creature';
-import { BaseTrait, BehaviorTrait, ClassBonusTrait, ForceCalculationTrait, FormationTrait, SubclassTrait, TraitBank, VisualTrait } from '../../types/trait';
+import { Role } from '../../types/creatures/creature';
+import { BaseTrait, BehaviorTrait, ClassBonusTrait, ForceCalculationTrait, FormationTrait, SubclassTrait, TraitBank, VisualTrait } from '../../types/traits/trait';
 
 /**
  * Trait Bank Loader class
@@ -373,3 +373,4 @@ export class TraitBankLoader {
 export function getTraitBankLoader(): TraitBankLoader {
   return TraitBankLoader.getInstance();
 }
+

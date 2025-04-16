@@ -180,9 +180,9 @@ This document outlines the naming conventions used throughout the Bitcoin Protoz
 ### Import Paths
 - Use relative paths for imports within the same domain
 - Examples:
-  - `import { Trait } from '../types/trait'`
-  - `import { applyMutation } from './mutationService'`
-  - `import { createRNGStream } from '../../lib/rngSystem'`
+  - `import { Component } from 'react'`
+  - `import { Vector3 } from 'three'`
+  - `import { Trait } from '../types/traits/trait'` or simply `import { Trait } from '../types/traits'`
 
 ### Barrel Exports
 - Use index.ts files for barrel exports

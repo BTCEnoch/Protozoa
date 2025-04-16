@@ -6,8 +6,8 @@
  */
 
 // No need for uuid import as we'll use deterministic IDs
-import { BlockData } from '../types/bitcoin';
-import { Creature, CreatureGroup, Role, Tier, TierThresholds } from '../types/creature';
+import { BlockData } from '../types/bitcoin/bitcoin';
+import { Creature, CreatureGroup, Role, Tier, TierThresholds } from '../types/creatures/creature';
 import { createRNGFromBlockNonce, RNGSystem } from '../lib/rngSystem';
 import { getBitcoinService } from './bitcoinService';
 import { getTraitService } from './traits';
@@ -248,3 +248,4 @@ export class CreatureGeneratorService {
 export function getCreatureGeneratorService(): CreatureGeneratorService {
   return CreatureGeneratorService.getInstance();
 }
+

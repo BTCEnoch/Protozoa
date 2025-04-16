@@ -5,7 +5,7 @@
  * At this tier, creatures have predefined subclasses with specific ability sets.
  */
 
-import { Tier, Role } from '../../../types/ability';
+import { Tier, Role } from '../../../types/abilities/ability';
 
 // Lifeweaver Subclass
 export const lifeweaverSubclass = {
@@ -127,3 +127,4 @@ export const coreLegendaryPool = {
 };
 
 export default coreLegendaryPool;
+

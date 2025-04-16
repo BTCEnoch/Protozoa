@@ -1,11 +1,17 @@
 /**
- * Types for Game Theory calculations
+ * Common Game Theory Types
+ * 
+ * This file contains simple versions of game theory interfaces for basic usage.
+ * For more detailed implementations, see the specific files:
+ * - payoffMatrix.ts: Contains detailed payoff matrix types
+ * - nashEquilibrium.ts: Contains detailed Nash equilibrium types
  */
 
 /**
  * Represents a payoff matrix for a 2-player game
+ * This is a simplified version of the PayoffMatrix interface in payoffMatrix.ts
  */
-export interface PayoffMatrix {
+export interface SimplePayoffMatrix {
   // Number of rows (player 1 strategies)
   rows: number;
   // Number of columns (player 2 strategies)
@@ -18,8 +24,9 @@ export interface PayoffMatrix {
 
 /**
  * Represents a Nash equilibrium solution
+ * This is a simplified version of the NashEquilibrium interface in nashEquilibrium.ts
  */
-export interface NashEquilibrium {
+export interface SimpleNashEquilibrium {
   // The type of equilibrium (pure or mixed)
   type: 'pure' | 'mixed';
   // Player 1's equilibrium strategy (probabilities)

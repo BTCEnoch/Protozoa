@@ -6,9 +6,9 @@
  */
 
 import { v4 as uuidv4 } from 'uuid';
-import { Creature, CreatureGroup } from '../../types/creature';
+import { Creature, CreatureGroup } from '../../types/creatures/creature';
 import { Role, Tier } from '../../types/core';
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import { getCreatureGenerator } from './creatureGenerator';
 
 /**

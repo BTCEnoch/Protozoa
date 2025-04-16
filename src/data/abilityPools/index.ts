@@ -6,7 +6,7 @@
 
 import { attackCommonPool } from './attackCommon';
 import { attackUncommonPool } from './attackUncommon';
-import { Tier, Role } from '../../types/ability';
+import { Tier, Role } from '../../types/abilities/ability';
 
 // Map to store all ability pools by role and tier
 const abilityPools = {
@@ -33,3 +33,4 @@ function getAbilityPool(role: Role, tier: Tier) {
 }
 
 export { getAbilityPool };
+

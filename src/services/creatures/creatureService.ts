@@ -5,11 +5,11 @@
  * It integrates with the creature generator, storage service, and event service.
  */
 
-import { Creature, CreatureGenerationOptions } from '../../types/creature';
+import { Creature, CreatureGenerationOptions } from '../../types/creatures/creature';
 import { getCreatureGenerator } from './creatureGenerator';
 import { getStorageService } from '../storage/storageService';
 import { getEventService } from '../events/eventService';
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 
 // Singleton instance
 let instance: CreatureService | null = null;

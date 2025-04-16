@@ -5,9 +5,9 @@
  * It ensures deterministic behavior creation based on Bitcoin block data.
  */
 
-import { Role } from '../../types/creature';
-import { RNGSystem } from '../../types/rng';
-import { BehaviorTrait } from '../../types/trait';
+import { Role } from '../../types/creatures/creature';
+import { RNGSystem } from '../../types/utils/rng';
+import { BehaviorTrait } from '../../types/traits/trait';
 import { Rarity } from '../../types/core';
 import { createRNGFromBlockNonce } from '../../lib/rngSystem';
 
@@ -204,3 +204,4 @@ export class BehaviorFactory {
 export function getBehaviorFactory(): BehaviorFactory {
   return BehaviorFactory.getInstance();
 }
+

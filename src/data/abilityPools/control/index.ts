@@ -10,7 +10,7 @@ import controlRarePool from './rare';
 import controlEpicPool from './epic';
 import controlLegendaryPool from './legendary';
 import controlMythicPool from './mythic';
-import { Tier } from '../../../types/ability';
+import { Tier } from '../../../types/abilities/ability';
 
 // Map to store all ability pools for the CONTROL role by tier
 export const controlAbilityPools = {
@@ -32,3 +32,4 @@ export {
 };
 
 export default controlAbilityPools;
+

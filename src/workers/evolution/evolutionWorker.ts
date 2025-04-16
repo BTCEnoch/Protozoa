@@ -6,9 +6,9 @@
  */
 
 import { WorkerMessage } from '../../types/workers/messages';
-import { Mutation, MutationCategory } from '../../types/mutation';
+import { Mutation, MutationCategory } from '../../types/mutations/mutation';
 import { Role, Rarity } from '../../types/core';
-import { CreatureGroup } from '../../types/creature';
+import { CreatureGroup } from '../../types/creatures/creature';
 
 // Confirmation milestones and corresponding mutation chances
 const CONFIRMATION_MILESTONES = [10000, 50000, 100000, 250000, 500000, 1000000];

@@ -4,7 +4,7 @@
  * This service provides functionality for finding Nash equilibria in games.
  */
 
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import {
   PayoffMatrix,
   StrategyProfile
@@ -166,3 +166,4 @@ export class NashEquilibriumFinder {
 export function getNashEquilibriumFinder(): NashEquilibriumFinder {
   return NashEquilibriumFinder.getInstance();
 }
+

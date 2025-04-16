@@ -4,8 +4,8 @@
  * Service for interfacing with the formation worker.
  */
 
-import { BlockData } from '../../types/bitcoin';
-import { FormationPattern } from '../../types/formation';
+import { BlockData } from '../../types/bitcoin/bitcoin';
+import { FormationPattern } from '../../types/formations/formation';
 import { WorkerBridge } from '../../lib/workerBridge';
 
 // Singleton instance

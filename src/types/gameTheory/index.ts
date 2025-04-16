@@ -9,3 +9,4 @@ export * from './decisionTree';
 export * from './nashEquilibrium';
 export * from './utilityFunction';
 export * from './battleOutcome';
+export * from './common'; // Export simplified interfaces

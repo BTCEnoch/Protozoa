@@ -6,7 +6,7 @@
  */
 
 import { Role, Tier } from '../../types/core';
-import { Ability, FormationTrait, getAbilityPool } from '../../types/ability_reference';
+import { Ability, FormationTrait, getAbilityPool } from '../../types/abilities/ability_reference';
 import { RNGSystem } from '../../lib/rngSystem';
 
 /**
@@ -230,3 +230,4 @@ export function getAbilityFactory(): AbilityFactory {
 
   return abilityFactoryInstance;
 }
+

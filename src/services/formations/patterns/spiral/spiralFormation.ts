@@ -5,7 +5,7 @@
  */
 
 import { Role, Tier, Rarity } from '../../../../types/core';
-import { FormationPattern, FormationPatternType } from '../../../../types/formation';
+import { FormationPattern, FormationPatternType } from '../../../../types/formations/formation';
 import { Vector3 } from '../../../../types/common';
 
 /**
@@ -168,3 +168,4 @@ export const spiralFormations = {
     [Tier.TIER_3]: createSpiralFormation(Role.MOVEMENT, Tier.TIER_3, Rarity.RARE)
   }
 };
+

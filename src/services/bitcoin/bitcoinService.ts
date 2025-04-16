@@ -6,7 +6,7 @@
  * needed for creature generation and evolution.
  */
 
-import { BlockData, getConfirmationMilestone, getMutationChance } from '../types/bitcoin';
+import { BlockData, getConfirmationMilestone, getMutationChance } from '../types/bitcoin/bitcoin';
 
 // Cache interface for storing fetched block data
 interface BlockDataCache {
@@ -243,3 +243,4 @@ export class BitcoinService {
 export function getBitcoinService(apiBaseUrl?: string, cacheExpiryTime?: number): BitcoinService {
   return BitcoinService.getInstance(apiBaseUrl, cacheExpiryTime);
 }
+

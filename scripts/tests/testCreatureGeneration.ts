@@ -6,7 +6,7 @@
  */
 
 import { generateCreature } from '../lib/creatureGenerator';
-import { Tier, Role } from '../types/ability';
+import { Tier, Role } from '../types/abilities/ability';
 
 // Test blocks with different confirmation levels
 const testBlocks = [
@@ -82,3 +82,4 @@ async function main() {
 
 // Run the main function
 main().catch(console.error);
+

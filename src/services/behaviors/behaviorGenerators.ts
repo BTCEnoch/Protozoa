@@ -5,7 +5,7 @@
  * that can be registered with the behavior service.
  */
 
-import { BehaviorTrait } from '../../types/trait';
+import { BehaviorTrait } from '../../types/traits/trait';
 import { Position3D } from '../formations/formationService';
 
 /**
@@ -202,3 +202,4 @@ export function calculateCenterOfMass(positions: Position3D[]): Position3D {
     z: sumZ / positions.length
   };
 }
+

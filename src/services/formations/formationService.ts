@@ -5,11 +5,11 @@
  */
 
 import { Role, Tier } from '../../types/core';
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import { Vector3 } from '../../types/common';
-import { FormationPattern, FormationPatternType } from '../../types/formation';
+import { FormationPattern, FormationPatternType } from '../../types/formations/formation';
 import { createRNGFromBlock } from '../../lib/rngSystem';
-import { RNGSystem } from '../../types/rng';
+import { RNGSystem } from '../../types/utils/rng';
 
 // Import formation patterns
 import { generateCircleFormation } from './patterns/circle/circleGenerator';
@@ -370,3 +370,4 @@ export function getFormationService(): FormationService {
   }
   return instance;
 }
+

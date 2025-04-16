@@ -4,7 +4,7 @@
  * Service for managing creature evolution.
  */
 
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 
 // Singleton instance
 let instance: EvolutionService | null = null;
@@ -53,3 +53,4 @@ export function getEvolutionService(): EvolutionService {
   }
   return instance;
 }
+

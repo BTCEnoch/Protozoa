@@ -10,7 +10,7 @@
  * decision-making for creature behaviors and battles.
  */
 
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import {
   PayoffMatrix,
   StrategyProfile
@@ -265,6 +265,7 @@ export class PayoffMatrixService {
 export function getPayoffMatrixService(): PayoffMatrixService {
   return PayoffMatrixService.getInstance();
 }
+
 
 
 

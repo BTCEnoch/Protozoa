@@ -5,10 +5,10 @@
  * It handles visual trait selection, application, and evolution.
  */
 
-import { BlockData } from '../../types/bitcoin';
-import { Role, Tier } from '../../types/ability';
-import { VisualTrait, VisualRegistry, getRandomVisualTrait, createDefaultVisualTrait } from '../../types/visual';
-import { RNGSystem } from '../../types/rng';
+import { BlockData } from '../../types/bitcoin/bitcoin';
+import { Role, Tier } from '../../types/abilities/ability';
+import { VisualTrait, VisualRegistry, getRandomVisualTrait, createDefaultVisualTrait } from '../../types/visuals/visual';
+import { RNGSystem } from '../../types/utils/rng';
 import { createRNGFromBlockNonce } from '../../lib/rngSystem';
 import { getVisualBankLoader } from './visualBankLoader';
 
@@ -162,3 +162,4 @@ export function getVisualService(): VisualService {
   }
   return visualServiceInstance;
 }
+

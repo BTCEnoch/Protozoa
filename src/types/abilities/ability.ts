@@ -6,7 +6,7 @@
  */
 
 // Import Role and Tier from core types
-import { Role, Tier } from './core';
+import { Role, Tier } from '../core';
 
 // Re-export Role and Tier for convenience
 export { Role, Tier };

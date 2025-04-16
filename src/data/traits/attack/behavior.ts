@@ -1,6 +1,6 @@
 // Attack Behavior Traits
 
-import { BehaviorTrait } from '../../../types/trait';
+import { BehaviorTrait } from '../../../types/traits/trait';
 import { Role, Rarity, BehaviorType } from '../../../types/core';
 
 export const ATTACK_BEHAVIOR_TRAITS: BehaviorTrait[] = [
@@ -315,3 +315,4 @@ export const ATTACK_BEHAVIOR_TRAITS: BehaviorTrait[] = [
 ];
 
 export default ATTACK_BEHAVIOR_TRAITS;
+

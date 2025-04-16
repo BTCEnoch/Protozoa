@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import { getTraitService } from '../services/traits';
 import { getFormationService } from '../services/formations';
 import { getBehaviorService } from '../services/behaviors';
-import { BlockData } from '../types/bitcoin';
+import { BlockData } from '../types/bitcoin/bitcoin';
 
 /**
  * Hook for managing creature data
@@ -49,3 +49,4 @@ export const useCreature = (blockData: BlockData | null) => {
 
   return { creature, isLoading, error };
 };
+

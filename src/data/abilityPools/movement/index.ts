@@ -10,7 +10,7 @@ import movementRarePool from './rare';
 import movementEpicPool from './epic';
 import movementLegendaryPool from './legendary';
 import movementMythicPool from './mythic';
-import { Tier } from '../../../types/ability';
+import { Tier } from '../../../types/abilities/ability';
 
 // Map to store all ability pools for the MOVEMENT role by tier
 export const movementAbilityPools = {
@@ -32,3 +32,4 @@ export {
 };
 
 export default movementAbilityPools;
+

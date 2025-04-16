@@ -4,7 +4,7 @@
  * This service provides functionality for creating and evaluating decision trees.
  */
 
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import {
   DecisionTree,
   DecisionNode,
@@ -231,3 +231,4 @@ export class DecisionTreeService {
 export function getDecisionTreeService(): DecisionTreeService {
   return DecisionTreeService.getInstance();
 }
+

@@ -6,12 +6,12 @@
  * - For Rare+ tiers: Returns predefined subclasses
  */
 
-import { Tier, Role } from '../types/ability';
+import { Tier, Role } from '../types/abilities/ability';
 import { DynamicSubclass, PredefinedSubclass } from '../../ability_reference';
 import { RNGStream } from './rngSystem';
 import { getAbilityPool } from '../data/abilityPools';
 import { getPredefinedSubclasses } from '../data/predefinedSubclasses';
-import { TierRanges } from '../types/ability';
+import { TierRanges } from '../types/abilities/ability';
 
 /**
  * Generate a dynamic subclass for Common and Uncommon tiers
@@ -152,3 +152,4 @@ export function getSubclass(role: Role, tier: Tier, rng: RNGStream): DynamicSubc
 }
 
 module.exports = { generateDynamicSubclass, getPredefinedSubclass, usesDynamicSubclass, getSubclass };
+

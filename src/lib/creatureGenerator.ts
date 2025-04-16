@@ -5,7 +5,7 @@
  * It uses the RNG system and subclass generator to create creatures with appropriate abilities.
  */
 
-import { Role, Tier } from '../types/ability';
+import { Role, Tier } from '../types/abilities/ability';
 import { RNGSystem, createRNGFromBlockNonce } from './rngSystem';
 import { getSubclass } from './subclassGenerator';
 import { BlockData, fetchBlockData } from './bitcoinData';
@@ -118,3 +118,4 @@ export async function generateCreature(blockNumber: number): Promise<Creature> {
 }
 
 // Export is already handled by the export keyword on the function
+

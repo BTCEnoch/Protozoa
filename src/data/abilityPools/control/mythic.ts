@@ -5,7 +5,7 @@
  * At this tier, creatures have unique, powerful subclasses with specific ability sets.
  */
 
-import { Tier, Role } from '../../../types/ability';
+import { Tier, Role } from '../../../types/abilities/ability';
 
 // Mind Lord Subclass
 export const mindLordSubclass = {
@@ -127,3 +127,4 @@ export const controlMythicPool = {
 };
 
 export default controlMythicPool;
+

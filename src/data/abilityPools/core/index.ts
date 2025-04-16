@@ -10,7 +10,7 @@ import coreRarePool from './rare';
 import coreEpicPool from './epic';
 import coreLegendaryPool from './legendary';
 import coreMythicPool from './mythic';
-import { Tier } from '../../../types/ability';
+import { Tier } from '../../../types/abilities/ability';
 
 // Map to store all ability pools for the CORE role by tier
 export const coreAbilityPools = {
@@ -32,3 +32,4 @@ export {
 };
 
 export default coreAbilityPools;
+

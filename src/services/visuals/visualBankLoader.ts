@@ -5,13 +5,13 @@
  * and creating a visual registry for use by the visual service.
  */
 
-import { Role, Tier } from '../../types/ability';
+import { Role, Tier } from '../../types/abilities/ability';
 import {
   VisualTrait,
   VisualRegistry,
   ParticleAppearance,
   ParticleShape
-} from '../../types/visual';
+} from '../../types/visuals/visual';
 import { Color } from '../../types/core';
 import {
   Animation,
@@ -19,7 +19,7 @@ import {
   VisualEffect,
   VisualEffectType,
   VisualEffectTrigger
-} from '../../types/animation';
+} from '../../types/rendering/animation';
 
 /**
  * Visual bank loader class
@@ -385,3 +385,4 @@ export function getVisualBankLoader(): VisualBankLoader {
   }
   return visualBankLoaderInstance;
 }
+

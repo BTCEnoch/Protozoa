@@ -10,7 +10,7 @@ import defenseRarePool from './rare';
 import defenseEpicPool from './epic';
 import defenseLegendaryPool from './legendary';
 import defenseMythicPool from './mythic';
-import { Tier } from '../../../types/ability';
+import { Tier } from '../../../types/abilities/ability';
 
 // Map to store all ability pools for the DEFENSE role by tier
 export const defenseAbilityPools = {
@@ -32,3 +32,4 @@ export {
 };
 
 export default defenseAbilityPools;
+

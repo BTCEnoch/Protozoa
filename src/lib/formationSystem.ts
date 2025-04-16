@@ -7,9 +7,9 @@
 
 import { Role } from '../types/core';
 import { Vector3 } from '../types/common';
-import { Formation, FormationPattern } from '../types/formation';
-import { RNGSystem } from '../types/rng';
-import { ParticleGroup } from '../types/particle';
+import { Formation, FormationPattern } from '../types/formations/formation';
+import { RNGSystem } from '../types/utils/rng';
+import { ParticleGroup } from '../types/particles/particle';
 
 /**
  * Apply a formation to a particle group
@@ -478,3 +478,4 @@ export function updateFormationTransitions(
   
   return group;
 }
+

@@ -6,8 +6,8 @@
  */
 
 import { Role } from '../../types/core';
-import { ParticleGroup } from '../../types/particle';
-import { BlockData } from '../../types/bitcoin';
+import { ParticleGroup } from '../../types/particles/particle';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import { Vector3 } from '../../types/common';
 import { getParticleGroupFactory } from './particleGroupFactory';
 import { getBehaviorService } from '../behaviors';
@@ -206,3 +206,4 @@ class ParticleService {
 export function getParticleService(): ParticleService {
   return ParticleService.getInstance();
 }
+

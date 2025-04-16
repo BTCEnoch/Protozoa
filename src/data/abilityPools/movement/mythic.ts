@@ -5,7 +5,7 @@
  * At this tier, creatures have unique, powerful subclasses with specific ability sets.
  */
 
-import { Tier, Role } from '../../../types/ability';
+import { Tier, Role } from '../../../types/abilities/ability';
 
 // Quantum Blur Subclass
 export const quantumBlurSubclass = {
@@ -127,3 +127,4 @@ export const movementMythicPool = {
 };
 
 export default movementMythicPool;
+

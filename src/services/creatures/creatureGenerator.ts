@@ -8,8 +8,8 @@
 
 import { v4 as uuidv4 } from 'uuid';
 import { Role, Tier } from '../../types/core';
-import { Creature, CreatureGroup, CreatureGenerationOptions } from '../../types/creature';
-import { BlockData } from '../../types/bitcoin';
+import { Creature, CreatureGroup, CreatureGenerationOptions } from '../../types/creatures/creature';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import { createRNGFromBlock } from '../../lib/rngSystem';
 import { getTraitService } from '../traits/traitService';
 import { getFormationService } from '../formations/formationService';

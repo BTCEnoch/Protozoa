@@ -5,7 +5,7 @@
  * It uses localStorage for browser persistence and provides fallbacks.
  */
 
-import { Creature } from '../../types/creature';
+import { Creature } from '../../types/creatures/creature';
 
 // Constants
 const STORAGE_PREFIX = 'bitcoin_protozoa_';

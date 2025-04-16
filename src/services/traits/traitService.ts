@@ -5,7 +5,7 @@
  */
 
 import { Role, Rarity } from '../../types/core';
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 
 // Singleton instance
 let instance: TraitService | null = null;
@@ -56,3 +56,4 @@ export function getTraitService(): TraitService {
   }
   return instance;
 }
+

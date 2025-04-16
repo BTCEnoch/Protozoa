@@ -5,7 +5,7 @@
  * It records mutations and other evolutionary changes over time.
  */
 
-import { Mutation } from '../../types/mutation';
+import { Mutation } from '../../types/mutations/mutation';
 
 /**
  * Evolution history interface
@@ -245,3 +245,4 @@ export class EvolutionTracker {
 export function getEvolutionTracker(): EvolutionTracker {
   return EvolutionTracker.getInstance();
 }
+

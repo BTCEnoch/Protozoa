@@ -7,7 +7,7 @@
  */
 
 import { WorkerMessage } from '../../types/workers/messages';
-import { FormationPattern, FormationPatternType } from '../../types/formation';
+import { FormationPattern, FormationPatternType } from '../../types/formations/formation';
 
 // Custom formation configuration for worker
 interface FormationConfig {

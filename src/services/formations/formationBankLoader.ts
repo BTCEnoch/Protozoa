@@ -6,9 +6,9 @@
  */
 
 import { Role, Tier } from '../../types/core';
-import { Formation, FormationPattern, FormationPatternType, FormationEffectType, FormationEffect } from '../../types/formation';
+import { Formation, FormationPattern, FormationPatternType, FormationEffectType, FormationEffect } from '../../types/formations/formation';
 import { Vector3 } from '../../types/common';
-import { RNGSystem } from '../../types/rng';
+import { RNGSystem } from '../../types/utils/rng';
 
 // Type definition for FormationBank interface
 export interface FormationBank {
@@ -329,3 +329,4 @@ class FormationBankLoader {
 export function getFormationBankLoader(): FormationBankLoader {
   return FormationBankLoader.getInstance();
 }
+

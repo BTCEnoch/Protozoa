@@ -14,10 +14,10 @@ import {
   BlockEvent, 
   CreatureEvent, 
   MutationEvent
-} from '../../types/events';
+} from '../../types/events/events';
 import { getEventBus } from '../../lib/eventBus';
-import { Creature } from '../../types/creature';
-import { BlockData } from '../../types/bitcoin';
+import { Creature } from '../../types/creatures/creature';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 
 // Singleton instance
 let instance: EventService | null = null;

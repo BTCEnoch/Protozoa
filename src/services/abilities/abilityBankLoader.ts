@@ -6,7 +6,7 @@
  */
 
 import { Role } from '../../types/core';
-import { Tier, Ability, AbilityPool, FormationTrait } from '../../types/ability';
+import { Tier, Ability, AbilityPool, FormationTrait } from '../../types/abilities/ability';
 
 /**
  * Ability bank loader class
@@ -296,3 +296,4 @@ export function getAbilityBankLoader(): AbilityBankLoader {
   }
   return abilityBankLoaderInstance;
 }
+

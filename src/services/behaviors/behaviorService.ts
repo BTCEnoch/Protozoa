@@ -5,7 +5,7 @@
  */
 
 import { Role } from '../../types/core';
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 
 // Singleton instance
 let instance: BehaviorService | null = null;
@@ -55,3 +55,4 @@ export function getBehaviorService(): BehaviorService {
   }
   return instance;
 }
+

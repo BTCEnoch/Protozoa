@@ -689,7 +689,7 @@ public/
 - **Renderers**: Use PascalCase for renderer classes with 'Renderer' suffix (e.g., `InstancedRenderer`)
 - **Workers**: Use PascalCase for worker classes with 'Worker' suffix (e.g., `PhysicsWorker`)
 - **Utility Functions**: Use camelCase for utility functions (e.g., `calculateDistance()`, `hashString()`)
-- **Import Paths**: Use relative paths for imports within the same domain (e.g., `import { Trait } from '../types/trait'`)
+- **Import Paths**: Use relative paths for imports within the same domain (e.g., `import { Trait } from '../types/traits/trait'` or more simply `import { Trait } from '../types/traits'`)
 - **Barrel Exports**: Use index.ts files for barrel exports (e.g., `export * from './traitService'`)
 - **Test Files**: Use .test.ts suffix for test files (e.g., `traitService.test.ts`)
 - **Mock Files**: Use .mock.ts suffix for mock files (e.g., `traitService.mock.ts`)

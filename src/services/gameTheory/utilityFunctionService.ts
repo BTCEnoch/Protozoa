@@ -4,7 +4,7 @@
  * This service provides functionality for creating and using utility functions.
  */
 
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 import {
   UtilityFunction,
   createUtilityFunction,
@@ -259,3 +259,4 @@ export class UtilityFunctionService {
 export function getUtilityFunctionService(): UtilityFunctionService {
   return UtilityFunctionService.getInstance();
 }
+

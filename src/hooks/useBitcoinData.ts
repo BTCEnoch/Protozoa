@@ -5,7 +5,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { BlockData } from '../types/bitcoin';
+import { BlockData } from '../types/bitcoin/bitcoin';
 
 /**
  * Hook for fetching Bitcoin block data
@@ -47,3 +47,4 @@ export const useBitcoinData = (blockNumber?: number) => {
 
   return { blockData, isLoading, error };
 };
+

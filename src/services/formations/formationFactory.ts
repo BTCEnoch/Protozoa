@@ -7,9 +7,9 @@
  */
 
 import { Role } from '../../types/core';
-import { Formation, FormationPattern, FormationPatternType, FormationEffect, FormationEffectType } from '../../types/formation';
-import { Tier } from '../../types/ability';
-import { RNGSystem, RNGStream } from '../../types/rng';
+import { Formation, FormationPattern, FormationPatternType, FormationEffect, FormationEffectType } from '../../types/formations/formation';
+import { Tier } from '../../types/abilities/ability';
+import { RNGSystem, RNGStream } from '../../types/utils/rng';
 import { hashString } from '../../lib/rngSystem';
 
 /**
@@ -606,3 +606,4 @@ export class FormationFactory {
 export function getFormationFactory(): FormationFactory {
   return FormationFactory.getInstance();
 }
+

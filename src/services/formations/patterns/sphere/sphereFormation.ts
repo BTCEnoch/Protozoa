@@ -5,7 +5,7 @@
  */
 
 import { Role, Tier, Rarity } from '../../../../types/core';
-import { FormationPattern, FormationPatternType } from '../../../../types/formation';
+import { FormationPattern, FormationPatternType } from '../../../../types/formations/formation';
 import { Vector3 } from '../../../../types/common';
 
 /**
@@ -150,3 +150,4 @@ export const sphereFormations = {
     [Tier.TIER_4]: createSphereFormation(Role.MOVEMENT, Tier.TIER_4, Rarity.EPIC)
   }
 };
+

@@ -4,7 +4,7 @@
  * Service for managing mutations.
  */
 
-import { BlockData } from '../../types/bitcoin';
+import { BlockData } from '../../types/bitcoin/bitcoin';
 
 // Singleton instance
 let instance: MutationService | null = null;
@@ -53,3 +53,4 @@ export function getMutationService(): MutationService {
   }
   return instance;
 }
+

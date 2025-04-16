@@ -10,7 +10,7 @@ import attackRarePool from './rare';
 import attackEpicPool from './epic';
 import attackLegendaryPool from './legendary';
 import attackMythicPool from './mythic';
-import { Tier } from '../../../types/ability';
+import { Tier } from '../../../types/abilities/ability';
 
 // Map to store all ability pools for the ATTACK role by tier
 export const attackAbilityPools = {
@@ -32,3 +32,4 @@ export {
 };
 
 export default attackAbilityPools;
+

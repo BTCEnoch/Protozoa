@@ -5,7 +5,7 @@
  * At this tier, creatures have unique, powerful subclasses with specific ability sets.
  */
 
-import { Tier, Role } from '../../../types/ability';
+import { Tier, Role } from '../../../types/abilities/ability';
 
 // Apocalypse Harbinger Subclass
 export const apocalypseHarbingerSubclass = {
@@ -127,3 +127,4 @@ export const attackMythicPool = {
 };
 
 export default attackMythicPool;
+

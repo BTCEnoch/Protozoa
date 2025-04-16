@@ -6,7 +6,7 @@
  * These abilities will be randomly assigned to Uncommon DEFENSE creatures.
  */
 
-import { Ability, FormationTrait, Tier, Role } from '../../../types/ability';
+import { Ability, FormationTrait, Tier, Role } from '../../../types/abilities/ability';
 
 // Primary Abilities Pool
 export const primaryAbilities: Ability[] = [
@@ -125,3 +125,4 @@ export const defenseUncommonPool = {
 };
 
 export default defenseUncommonPool;
+

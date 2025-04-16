@@ -6,7 +6,7 @@
  * These abilities will be randomly assigned to Uncommon ATTACK creatures.
  */
 
-import { Ability, FormationTrait, Tier, Role } from '../../types/ability';
+import { Ability, FormationTrait, Tier, Role } from '../../types/abilities/ability';
 
 // Primary Abilities Pool
 export const primaryAbilities: Ability[] = [
@@ -122,3 +122,4 @@ export const attackUncommonPool = {
   crowdControl: crowdControlAbilities,
   formationTraits: formationTraits
 };
+

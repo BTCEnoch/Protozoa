@@ -11,7 +11,7 @@ import {
   AttributeType,
   RoleToAttributeType
 } from '../../types/core';
-import { CreatureGroup } from '../../types/creature';
+import { CreatureGroup } from '../../types/creatures/creature';
 import {
   Mutation,
   MutationCategory,
@@ -25,7 +25,7 @@ import {
   BehaviorMutation,
   ExoticMutation,
   createMutationId
-} from '../../types/mutation';
+} from '../../types/mutations/mutation';
 
 /**
  * Mutation bank loader class
@@ -969,3 +969,4 @@ export class MutationBankLoader {
 export function getMutationBankLoader(): MutationBankLoader {
   return MutationBankLoader.getInstance();
 }
+

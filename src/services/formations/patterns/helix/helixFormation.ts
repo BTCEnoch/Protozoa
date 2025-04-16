@@ -5,7 +5,7 @@
  */
 
 import { Role, Tier, Rarity } from '../../../../types/core';
-import { FormationPattern, FormationPatternType } from '../../../../types/formation';
+import { FormationPattern, FormationPatternType } from '../../../../types/formations/formation';
 import { Vector3 } from '../../../../types/common';
 
 /**
@@ -167,3 +167,4 @@ export const helixFormations = {
     [Tier.TIER_3]: createHelixFormation(Role.MOVEMENT, Tier.TIER_3, Rarity.RARE)
   }
 };
+

@@ -11,8 +11,8 @@
  * creature generation and mutation systems.
  */
 
-import type { RNGStream, RNGSystem, RNGStreamName } from '../types/rng';
-import type { BlockData } from '../types/bitcoin';
+import type { RNGStream, RNGSystem, RNGStreamName } from '../types/utils/rng';
+import type { BlockData } from '../types/bitcoin/bitcoin';
 /**
  * Creates a hash from block data for seeding
  * @param blockData Bitcoin block data
@@ -185,5 +185,6 @@ export function createRNGFromBlock(blockData: BlockData): RNGSystem {
 
 export type { RNGStream, RNGSystem, RNGStreamName };
 export { RNGSystem };
+
 
 

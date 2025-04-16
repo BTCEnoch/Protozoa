@@ -11,8 +11,8 @@ import {
   BehaviorRegistry, 
   BehaviorTriggerType, 
   BehaviorActionType 
-} from '../../types/behavior';
-import { Tier } from '../../types/ability';
+} from '../../types/behaviors/behavior';
+import { Tier } from '../../types/abilities/ability';
 
 /**
  * Behavior Bank Loader class

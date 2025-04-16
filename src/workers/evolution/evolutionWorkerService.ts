@@ -4,9 +4,9 @@
  * Service for interfacing with the evolution worker.
  */
 
-import { BlockData } from '../../types/bitcoin';
-import { Creature } from '../../types/creature';
-import { Mutation } from '../../types/mutation';
+import { BlockData } from '../../types/bitcoin/bitcoin';
+import { Creature } from '../../types/creatures/creature';
+import { Mutation } from '../../types/mutations/mutation';
 import { WorkerBridge } from '../../lib/workerBridge';
 
 // Singleton instance

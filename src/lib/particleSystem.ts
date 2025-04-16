@@ -7,11 +7,11 @@
 
 import { v4 as uuidv4 } from 'uuid';
 import { Role, Tier } from '../types/core';
-import { Particle, ParticleGroup, ParticleCreationOptions, ParticleGroupCreationOptions } from '../types/particle';
-import { TraitCollection } from '../types/trait';
+import { Particle, ParticleGroup, ParticleCreationOptions, ParticleGroupCreationOptions } from '../types/particles/particle';
+import { TraitCollection } from '../types/traits/trait';
 import { Vector3, AttributeValues } from '../types/common';
-import { RNGSystem } from '../types/rng';
-import { SubclassData } from '../types/ability_reference';
+import { RNGSystem } from '../types/utils/rng';
+import { SubclassData } from '../types/abilities/ability_reference';
 
 // Default values for particles
 const DEFAULT_MASS = 1.0;
@@ -238,3 +238,4 @@ export function determineTierFromAttributeValue(attributeValue: number): Tier {
   if (attributeValue >= 301) return Tier.UNCOMMON;
   return Tier.COMMON;
 }
+

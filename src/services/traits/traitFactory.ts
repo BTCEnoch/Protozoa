@@ -6,8 +6,8 @@
  */
 
 import { Role } from '../../types/core';
-import { RNGSystem } from '../../types/rng';
-import { BaseTrait, BehaviorTrait, ClassBonusTrait, ForceCalculationTrait, FormationTrait, SubclassTrait, TraitBank, VisualTrait } from '../../types/trait';
+import { RNGSystem } from '../../types/utils/rng';
+import { BaseTrait, BehaviorTrait, ClassBonusTrait, ForceCalculationTrait, FormationTrait, SubclassTrait, TraitBank, VisualTrait } from '../../types/traits/trait';
 import { createRNGFromBlockNonce } from '../../lib/rngSystem';
 
 /**
@@ -188,3 +188,4 @@ export class TraitFactory {
 export function createTraitFactory(nonce: number, traitBank?: TraitBank): TraitFactory {
   return new TraitFactory(nonce, traitBank);
 }
+
