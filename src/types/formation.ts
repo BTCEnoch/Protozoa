@@ -9,6 +9,7 @@ import { Tier } from './ability';
 
 // Formation interface
 export interface Formation {
+  id: string;
   name: string;
   description: string;
   role: Role;
@@ -16,6 +17,7 @@ export interface Formation {
   subclass: string;
   pattern: FormationPattern;
   effect: FormationEffect;
+  center?: { x: number; y: number; z: number };
 }
 
 // Formation Pattern interface

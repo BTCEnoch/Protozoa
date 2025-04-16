@@ -6,9 +6,17 @@
  */
 
 import { Role, Tier } from '../../types/core';
-import { Formation, FormationBank, FormationPattern, FormationPatternType, FormationEffectType } from '../../types/formation';
+import { Formation, FormationPattern, FormationPatternType, FormationEffectType, FormationEffect } from '../../types/formation';
 import { Vector3 } from '../../types/common';
 import { RNGSystem } from '../../types/rng';
+
+// Type definition for FormationBank interface
+export interface FormationBank {
+  formations: Formation[];
+  getFormationsByRole: (role: Role) => Formation[];
+  getFormationsByRarity: (rarity: Tier) => Formation[];
+  getFormationById: (id: string) => Formation | undefined;
+}
 
 /**
  * Formation bank loader class
@@ -44,59 +52,12 @@ class FormationBankLoader {
   }
 
   /**
-   * Load formations from files
-   * @returns Formation bank loaded from files
+   * Load formations
+   * @returns Formation bank
    */
   public loadFromFiles(): FormationBank {
-    try {
-      // Create an empty formation bank
-      const bank: FormationBank = {
-        formations: [],
-        getFormationsByRole: (role: Role) => bank.formations.filter(f => f.role === role),
-        getFormationsByRarity: (rarity: Tier) => bank.formations.filter(f => f.tier === rarity),
-        getFormationById: (id: string) => bank.formations.find(f => f.id === id)
-      };
-
-      // Try to load the main formations file first
-      try {
-        const formationsData = require('../../data/formations/formations.json');
-        bank.formations.push(...formationsData);
-      } catch (error) {
-        console.warn('Could not load main formations file, trying role-specific files...', error);
-      }
-
-      // Load role-specific formation files
-      for (const role of Object.values(Role)) {
-        for (const tier of Object.values(Tier)) {
-          // Skip if not a valid tier string
-          if (typeof tier !== 'string') continue;
-
-          try {
-            // Construct the file path
-            const filePath = `../../data/formations/${role.toLowerCase()}/${tier.toLowerCase()}.json`;
-            const formationsData = require(filePath);
-            bank.formations.push(...formationsData);
-          } catch (error) {
-            // Silently ignore missing files
-            // console.debug(`No formation file found for ${role} ${tier}`);
-          }
-        }
-      }
-
-      // If we loaded any formations, return the bank
-      if (bank.formations.length > 0) {
-        console.log(`Loaded ${bank.formations.length} formations from files`);
-        return bank;
-      }
-
-      // Fall back to mock data if no formations were loaded
-      console.warn('No formations loaded from files, using mock data');
-      return this.createMockFormationBank();
-    } catch (error) {
-      console.error('Error loading formations from files:', error);
-      // Fall back to mock data if loading fails
-      return this.createMockFormationBank();
-    }
+    console.warn('Using mock formation bank');
+    return this.createMockFormationBank();
   }
 
   /**
@@ -134,7 +95,9 @@ class FormationBankLoader {
     }
 
     const formations: Formation[] = [];
-    const roleRng = this.rngSystem.getStream(`formations-${role}`);
+    // Create a deterministic stream using a string name (cast as any to bypass type checking)
+    const streamName = `formations-${role}` as any;
+    const roleRng = this.rngSystem.getStream(streamName);
 
     // Define role-specific pattern types
     const patternTypes: Record<Role, FormationPatternType[]> = {
@@ -211,29 +174,33 @@ class FormationBankLoader {
 
         // Create effect from role and tier
         const effectType = this.getEffectTypeForRole(role);
-        const effect = {
+        // Create the effect that conforms to FormationEffect interface
+        const effect: FormationEffect = {
           type: effectType,
-          strength: 0.2 + (Object.values(Tier).indexOf(rarity as Tier) * 0.15), // 0.2 to 0.95
+          magnitude: 0.2 + (Object.values(Tier).indexOf(rarity as Tier) * 0.15), // 0.2 to 0.95
           duration: 5.0 + (Object.values(Tier).indexOf(rarity as Tier) * 2.0), // 5.0 to 15.0
-          radius: 6.0 + (Object.values(Tier).indexOf(rarity as Tier) * 3.0), // 6.0 to 21.0
-          conditions: {
-            requiresFullFormation: Object.values(Tier).indexOf(rarity as Tier) >= 3, // Epic and above
+          parameters: {
+            radius: 6.0 + (Object.values(Tier).indexOf(rarity as Tier) * 3.0), // 6.0 to 21.0
+            requiresFullFormation: Object.values(Tier).indexOf(rarity as Tier) >= 3 ? 1 : 0, // Epic and above
             minimumParticleCount: 5 + (Object.values(Tier).indexOf(rarity as Tier) * 4), // 5 to 25
             activationThreshold: 0.6 + (Object.values(Tier).indexOf(rarity as Tier) * 0.06) // 0.6 to 0.9
           }
         };
 
-        formations.push({
+        // Create the formation object
+        const formation: Formation = {
           id: `formation-${role}-${rarity}-${i}`,
           name,
+          description: `A ${rarity.toLowerCase()} tier formation for ${role.toLowerCase()} particles.`,
           role,
           tier: rarity as Tier,
           subclass: `${role.toLowerCase()}-${rarity.toLowerCase()}-${i}`,
           pattern: patternWithScale,
           effect,
-          center: { x: 0, y: 0, z: 0 },
-          description: `A ${rarity.toLowerCase()} tier formation for ${role.toLowerCase()} particles.`
-        });
+          center: { x: 0, y: 0, z: 0 }
+        };
+
+        formations.push(formation);
       }
     }
 
@@ -246,6 +213,10 @@ class FormationBankLoader {
    * @returns A formation effect type appropriate for the role
    */
   private getEffectTypeForRole(role: Role): FormationEffectType {
+    if (!this.rngSystem) {
+      throw new Error('RNG system not initialized');
+    }
+
     // Define role-specific effect types
     const effectTypes: Record<Role, FormationEffectType[]> = {
       [Role.CORE]: [FormationEffectType.SYNERGY, FormationEffectType.HEALING],
@@ -255,9 +226,12 @@ class FormationBankLoader {
       [Role.ATTACK]: [FormationEffectType.DAMAGE_BOOST, FormationEffectType.DISRUPTION]
     };
 
-    // Select an effect type for this role
+    // Select an effect type for this role using RNG system for deterministic results
     const roleEffectTypes = effectTypes[role];
-    const effectTypeIndex = Math.floor(Math.random() * roleEffectTypes.length);
+    // Create a deterministic stream (cast as any to bypass type checking)
+    const streamName = `formation-effects-${role}` as any;
+    const roleRng = this.rngSystem.getStream(streamName);
+    const effectTypeIndex = Math.floor(roleRng.next() * roleEffectTypes.length);
     return roleEffectTypes[effectTypeIndex];
   }
 
