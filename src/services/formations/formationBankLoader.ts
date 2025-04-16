@@ -6,7 +6,7 @@
  */
 
 import { Role, Tier } from '../../types/core';
-import { Formation, FormationBank, FormationPattern } from '../../types/formation';
+import { Formation, FormationBank, FormationPattern, FormationPatternType, FormationEffectType } from '../../types/formation';
 import { Vector3 } from '../../types/common';
 import { RNGSystem } from '../../types/rng';
 
@@ -48,9 +48,55 @@ class FormationBankLoader {
    * @returns Formation bank loaded from files
    */
   public loadFromFiles(): FormationBank {
-    // In a real implementation, this would load formations from files
-    // For now, we'll create mock formations
-    return this.createMockFormationBank();
+    try {
+      // Create an empty formation bank
+      const bank: FormationBank = {
+        formations: [],
+        getFormationsByRole: (role: Role) => bank.formations.filter(f => f.role === role),
+        getFormationsByRarity: (rarity: Tier) => bank.formations.filter(f => f.tier === rarity),
+        getFormationById: (id: string) => bank.formations.find(f => f.id === id)
+      };
+
+      // Try to load the main formations file first
+      try {
+        const formationsData = require('../../data/formations/formations.json');
+        bank.formations.push(...formationsData);
+      } catch (error) {
+        console.warn('Could not load main formations file, trying role-specific files...', error);
+      }
+
+      // Load role-specific formation files
+      for (const role of Object.values(Role)) {
+        for (const tier of Object.values(Tier)) {
+          // Skip if not a valid tier string
+          if (typeof tier !== 'string') continue;
+
+          try {
+            // Construct the file path
+            const filePath = `../../data/formations/${role.toLowerCase()}/${tier.toLowerCase()}.json`;
+            const formationsData = require(filePath);
+            bank.formations.push(...formationsData);
+          } catch (error) {
+            // Silently ignore missing files
+            // console.debug(`No formation file found for ${role} ${tier}`);
+          }
+        }
+      }
+
+      // If we loaded any formations, return the bank
+      if (bank.formations.length > 0) {
+        console.log(`Loaded ${bank.formations.length} formations from files`);
+        return bank;
+      }
+
+      // Fall back to mock data if no formations were loaded
+      console.warn('No formations loaded from files, using mock data');
+      return this.createMockFormationBank();
+    } catch (error) {
+      console.error('Error loading formations from files:', error);
+      // Fall back to mock data if loading fails
+      return this.createMockFormationBank();
+    }
   }
 
   /**
@@ -65,7 +111,7 @@ class FormationBankLoader {
     const bank: FormationBank = {
       formations: [],
       getFormationsByRole: (role: Role) => bank.formations.filter(f => f.role === role),
-      getFormationsByRarity: (rarity: Tier) => bank.formations.filter(f => f.rarity === rarity),
+      getFormationsByRarity: (rarity: Tier) => bank.formations.filter(f => f.tier === rarity),
       getFormationById: (id: string) => bank.formations.find(f => f.id === id)
     };
 
@@ -90,13 +136,13 @@ class FormationBankLoader {
     const formations: Formation[] = [];
     const roleRng = this.rngSystem.getStream(`formations-${role}`);
 
-    // Define role-specific patterns
-    const patterns: Record<Role, FormationPattern[]> = {
-      [Role.CORE]: ['sphere', 'circle', 'spiral'],
-      [Role.CONTROL]: ['grid', 'cube', 'vortex'],
-      [Role.MOVEMENT]: ['line', 'spiral', 'vortex'],
-      [Role.DEFENSE]: ['circle', 'sphere', 'cube'],
-      [Role.ATTACK]: ['vortex', 'spiral', 'line']
+    // Define role-specific pattern types
+    const patternTypes: Record<Role, FormationPatternType[]> = {
+      [Role.CORE]: [FormationPatternType.SPHERE, FormationPatternType.CIRCLE, FormationPatternType.SPIRAL],
+      [Role.CONTROL]: [FormationPatternType.GRID, FormationPatternType.PHALANX, FormationPatternType.VORTEX],
+      [Role.MOVEMENT]: [FormationPatternType.WAVE, FormationPatternType.SPIRAL, FormationPatternType.VORTEX],
+      [Role.DEFENSE]: [FormationPatternType.CIRCLE, FormationPatternType.SPHERE, FormationPatternType.PHALANX],
+      [Role.ATTACK]: [FormationPatternType.VORTEX, FormationPatternType.SPIRAL, FormationPatternType.ARROW]
     };
 
     // Define role-specific names
@@ -115,10 +161,19 @@ class FormationBankLoader {
 
       // Create 3 formations per rarity
       for (let i = 0; i < 3; i++) {
-        // Select a pattern for this role
-        const rolePatterns = patterns[role];
-        const patternIndex = Math.floor(roleRng.next() * rolePatterns.length);
-        const pattern = rolePatterns[patternIndex];
+        // Select a pattern type for this role
+        const rolePatternTypes = patternTypes[role];
+        const patternTypeIndex = Math.floor(roleRng.next() * rolePatternTypes.length);
+        const patternType = rolePatternTypes[patternTypeIndex];
+
+        // Create a pattern from the pattern type
+        const pattern: FormationPattern = {
+          type: patternType,
+          density: roleRng.next() * 0.5 + 0.3, // 0.3 to 0.8
+          cohesion: roleRng.next() * 0.5 + 0.3, // 0.3 to 0.8
+          flexibility: roleRng.next() * 0.5 + 0.3, // 0.3 to 0.8
+          parameters: { scale: 1.0 }
+        };
 
         // Select a name for this formation
         const roleNames = names[role];
@@ -145,16 +200,39 @@ class FormationBankLoader {
         const scale = baseScale * roleScales[role] * rarityScales[rarity as Tier];
 
         // Create the formation
+        // Update pattern parameters with scale
+        const patternWithScale: FormationPattern = {
+          ...pattern,
+          parameters: {
+            ...pattern.parameters,
+            scale
+          }
+        };
+
+        // Create effect from role and tier
+        const effectType = this.getEffectTypeForRole(role);
+        const effect = {
+          type: effectType,
+          strength: 0.2 + (Object.values(Tier).indexOf(rarity as Tier) * 0.15), // 0.2 to 0.95
+          duration: 5.0 + (Object.values(Tier).indexOf(rarity as Tier) * 2.0), // 5.0 to 15.0
+          radius: 6.0 + (Object.values(Tier).indexOf(rarity as Tier) * 3.0), // 6.0 to 21.0
+          conditions: {
+            requiresFullFormation: Object.values(Tier).indexOf(rarity as Tier) >= 3, // Epic and above
+            minimumParticleCount: 5 + (Object.values(Tier).indexOf(rarity as Tier) * 4), // 5 to 25
+            activationThreshold: 0.6 + (Object.values(Tier).indexOf(rarity as Tier) * 0.06) // 0.6 to 0.9
+          }
+        };
+
         formations.push({
           id: `formation-${role}-${rarity}-${i}`,
           name,
           role,
-          rarity: rarity as Tier,
-          pattern,
-          scale,
+          tier: rarity as Tier,
+          subclass: `${role.toLowerCase()}-${rarity.toLowerCase()}-${i}`,
+          pattern: patternWithScale,
+          effect,
           center: { x: 0, y: 0, z: 0 },
-          description: `A ${rarity.toLowerCase()} tier formation for ${role.toLowerCase()} particles.`,
-          effects: this.getFormationEffects(role, rarity as Tier)
+          description: `A ${rarity.toLowerCase()} tier formation for ${role.toLowerCase()} particles.`
         });
       }
     }
@@ -163,7 +241,28 @@ class FormationBankLoader {
   }
 
   /**
-   * Get formation effects for a role and rarity
+   * Get an appropriate effect type for a role
+   * @param role The particle role
+   * @returns A formation effect type appropriate for the role
+   */
+  private getEffectTypeForRole(role: Role): FormationEffectType {
+    // Define role-specific effect types
+    const effectTypes: Record<Role, FormationEffectType[]> = {
+      [Role.CORE]: [FormationEffectType.SYNERGY, FormationEffectType.HEALING],
+      [Role.CONTROL]: [FormationEffectType.CONTROL, FormationEffectType.DISRUPTION],
+      [Role.MOVEMENT]: [FormationEffectType.SPEED_BOOST, FormationEffectType.SYNERGY],
+      [Role.DEFENSE]: [FormationEffectType.DEFENSE_BOOST, FormationEffectType.SHIELD],
+      [Role.ATTACK]: [FormationEffectType.DAMAGE_BOOST, FormationEffectType.DISRUPTION]
+    };
+
+    // Select an effect type for this role
+    const roleEffectTypes = effectTypes[role];
+    const effectTypeIndex = Math.floor(Math.random() * roleEffectTypes.length);
+    return roleEffectTypes[effectTypeIndex];
+  }
+
+  /**
+   * Get formation effects for a role and rarity (legacy method)
    * @param role Particle role
    * @param rarity Formation rarity
    * @returns Formation effects
