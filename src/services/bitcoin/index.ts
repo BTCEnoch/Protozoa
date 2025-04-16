@@ -1,0 +1,1 @@
+export { BitcoinService, getBitcoinService } from './bitcoinService';
