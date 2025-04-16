@@ -1,5 +1,7 @@
 # Bitcoin Protozoa
 
+> A particle-based life simulation system powered by Bitcoin block data
+
 ## 📚 Essential Documentation
 1. [Project Rules](./docs/rules.md) - **START HERE**
 2. [Project Overview](./docs/project_overview.md)
@@ -132,7 +134,7 @@ npm run build
 
 ### Bitcoin Integration
 - Block data fetching via ordinals.com API
-- Deterministic RNG system using block nonce
+- Deterministic RNG system using complete block data
 - Evolution triggers based on confirmations
 
 ### Rendering System
@@ -206,8 +208,8 @@ For current implementation status and roadmap, see:
 ### RNG System Navigation
 - Core RNG Implementation: [@src/lib/rngSystem.ts](./src/lib/rngSystem.ts)
 - RNG Types: [@src/types/rng.ts](./src/types/rng.ts)
-- Block Nonce Processing: [@src/services/bitcoin/nonceProcessor.ts](./src/services/bitcoin/nonceProcessor.ts)
-- RNG Stream Interface: [@src/types/rng/RNGStream.ts](./src/types/rng/RNGStream.ts)
+- Block Data Processing: [@src/services/bitcoin/bitcoinService.ts](./src/services/bitcoin/bitcoinService.ts)
+- RNG Stream Interface: [@src/types/rng.ts](./src/types/rng.ts)
 - RNG Documentation: [@docs/rng_system.md](./docs/rng_system.md)
 
 ### Trait System Navigation
@@ -268,10 +270,13 @@ TraitService -> ParticleGroupFactory -> BehaviorSystem -> RenderingSystem
 ### Common Usage Patterns
 #### RNG Stream Creation
 ```typescript
-import { createRNGFromBlockNonce, createRNGStream } from '../../lib/rngSystem';
+import { createRNGFromBlock } from '../../lib/rngSystem';
 
-// Create deterministic RNG stream from block nonce
-const rngStream = createRNGStream(createRNGFromBlockNonce(blockData.nonce));
+// Create deterministic RNG system from block data
+const rngSystem = createRNGFromBlock(blockData);
+
+// Get a specific stream for a domain
+const traitsStream = rngSystem.getStream('traits');
 ```
 
 #### Trait Application

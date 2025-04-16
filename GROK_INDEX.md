@@ -1,5 +1,7 @@
 # GROK NAVIGATION INDEX
 
+> Bitcoin Protozoa: A particle-based life simulation system powered by Bitcoin block data
+
 ## 🚀 Start Here
 1. [Project Rules](./docs/rules.md) - Essential implementation rules and constraints
 2. [Project Overview](./docs/project_overview.md) - System architecture and concepts
@@ -82,10 +84,12 @@ interface ComputeTask {
 ### Bitcoin Integration
 ```typescript
 interface BlockData {
-    nonce: string;        // Used for RNG seed
+    height: number;       // Block height
+    hash: string;        // Block hash
+    nonce: string;       // Used for RNG seed
+    timestamp: number;   // Affects mutation rates
     confirmations: number; // Triggers evolution
-    timestamp: number;     // Affects mutation rates
-    difficulty: number;    // Influences trait rarity
+    difficulty: number;  // Influences trait rarity
 }
 ```
 
@@ -107,7 +111,7 @@ interface ParticleSystem {
 class TraitService {
     private static instance: TraitService;
     private constructor() {}
-    
+
     public static getInstance(): TraitService {
         if (!TraitService.instance) {
             TraitService.instance = new TraitService();
@@ -182,8 +186,23 @@ interface BattleSystem {
 }
 ```
 
+## 🛠️ Recent TypeScript Improvements
+
+### Type System Enhancements
+- Standardized Vector3 interface from common.ts
+- Created ColorTheme interface for consistent color handling
+- Updated Tier and Role enums with consistent naming conventions
+- Fixed RNG system to use complete block data instead of just nonce
+- Added proper type definitions for animations and abilities
+
+### Code Quality Improvements
+- Fixed duplicate function issues in worker files
+- Added proper type annotations to trait files
+- Improved error handling in Bitcoin service
+- Enhanced type safety in particle system
+
 ## 🔍 Search Tags
-#ARCHITECTURE #PARTICLE_SYSTEM #BITCOIN_INTEGRATION 
+#ARCHITECTURE #PARTICLE_SYSTEM #BITCOIN_INTEGRATION
 #GAME_THEORY #EVOLUTION #PERFORMANCE_OPTIMIZATION
 #THREE_JS #WEB_WORKERS #TYPESCRIPT
 
@@ -229,11 +248,28 @@ Read these documents in the following order for complete project understanding:
 protozoa/
 ├── src/               # Source code
 │   ├── types/         # Type definitions
+│   │   ├── core.ts       # Core type definitions
+│   │   ├── common.ts     # Common interfaces
+│   │   ├── trait.ts      # Trait interfaces
+│   │   ├── rng.ts        # RNG system types
+│   │   ├── animation.ts  # Animation types
+│   │   └── visual.ts     # Visual effect types
 │   ├── services/      # Business logic
+│   │   ├── bitcoin/     # Bitcoin integration
+│   │   ├── traits/      # Trait management
+│   │   ├── visuals/     # Visual effects
+│   │   └── rendering/   # Rendering pipeline
 │   ├── lib/           # Core utilities
+│   │   ├── rngSystem.ts # RNG implementation
+│   │   ├── formationSystem.ts # Formation logic
+│   │   └── particleSystem.ts # Particle management
 │   ├── data/          # Data definitions
-│   └── models/        # Data models
-├── traits/            # Trait definitions
+│   │   └── traits/      # Trait data
+│   ├── components/    # React components
+│   └── workers/       # Web workers
+│       ├── physics/     # Physics calculations
+│       ├── behavior/    # Behavior processing
+│       └── render/      # Rendering workers
 ├── docs/              # Documentation
 └── tests/             # Test suite
 ```
